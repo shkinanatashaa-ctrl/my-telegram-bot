@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(name)
 
 
-BOT_TOKEN = os.getenv(8357525142:AAGH9ibtm3P57lIqVVZPPKm2m4jHwFXuFJI) 
+BOT_TOKEN = os.getenv("8357525142:AAGH9ibtm3P57lIqVVZPPKm2m4jHwFXuFJI") 
 CHANNEL_USERNAME = "@shkina_design"  
 CHANNEL_CHAT_ID = "-1002252990214"
 
