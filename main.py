@@ -5,7 +5,7 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Cont
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(_name_)
+logger = logging.getLogger(__name__)
 
 # ⚠️ ЗАМЕНИ ТОЛЬКО ID КАНАЛА НА РЕАЛЬНЫЙ ⚠️
 BOT_TOKEN = os.getenv("BOT_TOKEN")
