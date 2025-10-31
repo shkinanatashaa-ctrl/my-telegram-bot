@@ -17,7 +17,7 @@ async def check_subscription(user_id, context):
         print(f"Ошибка проверки подписки: {e}")
         return False
 
-async def start(update, context):
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     print(f"Пользователь {user_id} запустил бота")
     
@@ -42,7 +42,7 @@ async def start(update, context):
         await update.message.reply_text("🎁 Получить список подарков!", reply_markup=reply_markup)
         print(f"Пользователь {user_id} не подписан")
 
-async def button_handler(update, context):
+async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
     user_id = query.from_user.id
@@ -55,13 +55,14 @@ async def button_handler(update, context):
         await query.edit_message_text("💔 Не вижу твоей подписки, попробуй ещё раз 🌸")
         print(f"Подписка {user_id} не найдена")
 
-def main():
+async def main():
     print("=== ЗАПУСК ПРИЛОЖЕНИЯ ===")
     application = Application.builder().token(BOT_TOKEN).build()
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button_handler, pattern="check"))
     print("=== БОТ ЗАПУЩЕН И РАБОТАЕТ! ===")
-    application.run_polling()
+    await application.run_polling()
 
 if __name__ == "__main__":
-    main()
+    import asyncio
+    asyncio.run(main())
